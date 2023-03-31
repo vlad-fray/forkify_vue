@@ -22,7 +22,7 @@ const controlRecipes = async function () {
 		bookmarksView.update(model.state.bookmarks);
 
 		// Loading recipe
-		await model.loadRecipe(id);
+		await model.loadRecipe(+id);
 
 		// Rendering recipe
 		recipeView.render(model.state.recipe);
@@ -53,7 +53,7 @@ const controlSearchResults = async function () {
 	}
 };
 
-const controlPagination = function (goToPage) {
+const controlPagination = function (goToPage: number) {
 	try {
 		// Renderind new results
 		resultsView.render(model.getSearchResultsPage(goToPage));
@@ -65,7 +65,7 @@ const controlPagination = function (goToPage) {
 	}
 };
 
-const controlServings = function (servingsCount) {
+const controlServings = function (servingsCount?: number) {
 	//Update the recipe servings (in state)
 	model.updateServings(servingsCount);
 
